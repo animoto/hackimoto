@@ -8,7 +8,7 @@ class HackimotosController < ApplicationController
   end
 
   def new
-
+    @hackimoto = Hackimoto.new
   end
 
   def create

@@ -1,1 +1,12 @@
-new
+<%= form_for @hackimoto do |f| %>
+  <%= f.label :name %>:
+  <%= f.input_field :name %><br />
+
+  <%= f.label :description %>:
+  <%= f.text_field :description %><br />
+
+  <%= f.label :start_date %>:
+  <%= f.date_field :start_date %><br />
+
+  <%= f.submit %>
+<% end %>

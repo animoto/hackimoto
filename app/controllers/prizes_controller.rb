@@ -8,7 +8,7 @@ class PrizesController < ApplicationController
   end
 
   def new
-
+    @prize = Prize.new({ category_id: params[:category_id] })
   end
 
   def create

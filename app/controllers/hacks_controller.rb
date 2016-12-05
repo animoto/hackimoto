@@ -8,7 +8,7 @@ class HackimotosController < ApplicationController
   end
 
   def new
-
+    @hack = Hack.new({ hackimoto_id: params[:hackimoto_id] })
   end
 
   def create

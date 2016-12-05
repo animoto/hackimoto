@@ -1,1 +1,9 @@
-new
+<%= form_for @prize do |f| %>
+  <%= f.label :rank %>:
+  <%= f.input_field :rank %><br />
+
+  <%= f.label :amount %>:
+  <%= f.text_field :amount %><br />
+
+  <%= f.submit %>
+<% end %>

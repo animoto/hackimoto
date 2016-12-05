@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def new
-
+    @category = Category.new({ hackimoto_id: params[:hackimoto_id] })
   end
 
   def create
