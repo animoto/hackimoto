@@ -1,6 +1,6 @@
 <h1><%= @hackimoto.name %></h1>
 <div>Description: <%= @hackimoto.description %></div>
-<div>Start date: <%= @hackimoto.start_date %></div>
+<div>Start date: <%= @hackimoto.start_date.strftime("%B %d, %Y") %></div>
 <h2>Categories</h2>
 <% @hackimoto.categories.each do |category| %>
   <div>

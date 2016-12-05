@@ -1,6 +1,7 @@
+<h1>Hackimotos</h1>
 <% @hackimotos.each do |hackimoto| %>
   <div>
-    <a href=<%= hackimoto_path(hackimoto) %>><%= hackimoto.name %></a>
+    <a href=<%= hackimoto_path(hackimoto) %>><%= hackimoto.name %> - <%= hackimoto.start_date.strftime("%B %d, %Y") %></a>
   </div>
 <% end %>
 <a href=<%= new_hackimoto_path %>>Create</a>
