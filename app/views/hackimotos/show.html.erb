@@ -4,7 +4,7 @@
 <h2>Categories</h2>
 <% @hackimoto.categories.each do |category| %>
   <div>
-    <%= category.name %> - <%= category.description %>
+    <%= category.name %> - <%= category.description %> <%= button_to "Delete", hackimoto_category_path({ hackimoto_id: @hackimoto.id, id: category.id }), method: :delete %>
     <ul>
       <% category.prizes.each do |prize| %>
         <li><%= prize.rank.ordinalize %> place: $<%= prize.amount %></li>
@@ -14,3 +14,10 @@
   </div>
 <% end %>
 <a href=<%= new_hackimoto_category_path(@hackimoto) %>>Create</a>
+<h2>Hacks</h2>
+<% @hackimoto.hacks.each do |hack| %>
+  <div>
+    <%= hack.name %> - <%= hack.description %> <%= button_to "Delete", hackimoto_hack_path({ hackimoto_id: @hackimoto.id, id: hack.id }), method: :delete %>
+  </div>
+<% end %>
+<a href=<%= new_hackimoto_hack_path(@hackimoto) %>>Create</a>

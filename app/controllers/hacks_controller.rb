@@ -1,4 +1,4 @@
-class HackimotosController < ApplicationController
+class HacksController < ApplicationController
   before_filter :define_hackimoto
 
   def index
@@ -14,7 +14,13 @@ class HackimotosController < ApplicationController
   end
 
   def create
+    @hack = @hackimoto.hacks.new(hacks_params)
 
+    if @hack.save
+      redirect_to hackimoto_path({ id: @hackimoto })
+    else
+      redirect_to hackimoto_path({ id: @hackimoto })
+    end
   end
 
   def update
@@ -29,5 +35,9 @@ class HackimotosController < ApplicationController
 
   def define_hackimoto
     @hackimoto = Hackimoto.find(params[:hackimoto_id])
+  end
+
+  def hacks_params
+    params.require(:hack).permit(:name, :description)
   end
 end

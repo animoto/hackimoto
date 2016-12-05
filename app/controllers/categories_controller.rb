@@ -20,7 +20,10 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
 
+    redirect_to hackimoto_path({ id: @hackimoto })
   end
 
   private
