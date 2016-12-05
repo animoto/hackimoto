@@ -1,18 +1,18 @@
 class CategoriesController < ApplicationController
-  def index
-    @category = Category.where({ hackimoto_id: params[:hackimoto_id] })
-  end
-
-  def show
-
-  end
+  before_filter :define_hackimoto
 
   def new
-    @category = Category.new({ hackimoto_id: params[:hackimoto_id] })
+    @category = Category.new({ hackimoto: @hackimoto })
   end
 
   def create
+    @category = @hackimoto.categories.new(categories_params)
 
+    if @category.save
+      redirect_to hackimoto_path({ id: @hackimoto })
+    else
+      redirect_to hackimoto_path({ id: @hackimoto })
+    end
   end
 
   def update
@@ -22,4 +22,15 @@ class CategoriesController < ApplicationController
   def destroy
 
   end
+
+  private
+
+  def define_hackimoto
+    @hackimoto = Hackimoto.find(params[:hackimoto_id])
+  end
+
+  def categories_params
+    params.require(:category).permit(:name, :description)
+  end
+
 end

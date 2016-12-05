@@ -1,1 +1,16 @@
-show
+<h1><%= @hackimoto.name %></h1>
+<div>Description: <%= @hackimoto.description %></div>
+<div>Start date: <%= @hackimoto.start_date %></div>
+<h2>Categories</h2>
+<% @hackimoto.categories.each do |category| %>
+  <div>
+    <%= category.name %> - <%= category.description %>
+    <ul>
+      <% category.prizes.each do |prize| %>
+        <li><%= prize.rank.ordinalize %> place: $<%= prize.amount %></li>
+      <% end %>
+      <li><a href=<%= new_hackimoto_category_prize_path({ hackimoto_id: @hackimoto.id, category_id: category.id }) %>>Create</a></li>
+    </ul>
+  </div>
+<% end %>
+<a href=<%= new_hackimoto_category_path(@hackimoto) %>>Create</a>

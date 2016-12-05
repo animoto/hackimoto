@@ -4,7 +4,7 @@ class HackimotosController < ApplicationController
   end
 
   def show
-
+    @hackimoto = Hackimoto.find(params[:id])
   end
 
   def new
@@ -12,7 +12,13 @@ class HackimotosController < ApplicationController
   end
 
   def create
+    @hackimoto = Hackimoto.new(hackimoto_params)
 
+    if @hackimoto.save
+      redirect_to @hackimoto
+    else
+      redirect_to hackimoto_path
+    end
   end
 
   def update
@@ -22,4 +28,11 @@ class HackimotosController < ApplicationController
   def destroy
 
   end
+
+  private
+
+  def hackimoto_params
+    params.require(:hackimoto).permit(:name, :description, :start_date)
+  end
+
 end

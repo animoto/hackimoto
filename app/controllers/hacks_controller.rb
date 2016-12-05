@@ -1,6 +1,8 @@
 class HackimotosController < ApplicationController
+  before_filter :define_hackimoto
+
   def index
-    @hacks = Hack.where({ hackimoto_id: params[:hackimoto_id] })
+    @hacks = Hack.where({ hackimoto: @hackimoto })
   end
 
   def show
@@ -8,7 +10,7 @@ class HackimotosController < ApplicationController
   end
 
   def new
-    @hack = Hack.new({ hackimoto_id: params[:hackimoto_id] })
+    @hack = Hack.new({ hackimoto: @hackimoto })
   end
 
   def create
@@ -21,5 +23,11 @@ class HackimotosController < ApplicationController
 
   def destroy
 
+  end
+
+  private
+
+  def define_hackimoto
+    @hackimoto = Hackimoto.find(params[:hackimoto_id])
   end
 end
