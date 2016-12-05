@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205150000) do
+ActiveRecord::Schema.define(version: 20161205163648) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",         null: false
@@ -23,6 +23,26 @@ ActiveRecord::Schema.define(version: 20161205150000) do
 
   add_index "categories", ["hackimoto_id"], name: "index_categories_on_hackimoto_id"
 
+  create_table "hack_users", force: :cascade do |t|
+    t.integer  "hack_id",    null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "hack_users", ["hack_id"], name: "index_hack_users_on_hack_id"
+  add_index "hack_users", ["user_id"], name: "index_hack_users_on_user_id"
+
+  create_table "hackimoto_admin_users", force: :cascade do |t|
+    t.integer  "hackimoto_id", null: false
+    t.integer  "user_id",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "hackimoto_admin_users", ["hackimoto_id"], name: "index_hackimoto_admin_users_on_hackimoto_id"
+  add_index "hackimoto_admin_users", ["user_id"], name: "index_hackimoto_admin_users_on_user_id"
+
   create_table "hackimotos", force: :cascade do |t|
     t.string   "name",        null: false
     t.string   "description"
@@ -31,6 +51,18 @@ ActiveRecord::Schema.define(version: 20161205150000) do
     t.datetime "updated_at"
   end
 
+  create_table "hacks", force: :cascade do |t|
+    t.string   "name",                             null: false
+    t.string   "description"
+    t.integer  "hackimoto_id",                     null: false
+    t.integer  "proposed_user_id",                 null: false
+    t.boolean  "is_hack",          default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "hacks", ["hackimoto_id"], name: "index_hacks_on_hackimoto_id"
+
   create_table "prizes", force: :cascade do |t|
     t.integer  "category_id", null: false
     t.integer  "amount",      null: false
@@ -38,5 +70,18 @@ ActiveRecord::Schema.define(version: 20161205150000) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email",            null: false
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["oauth_token"], name: "index_users_on_oauth_token"
 
 end

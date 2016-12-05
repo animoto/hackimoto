@@ -8,6 +8,8 @@ class CreatePrizes < ActiveRecord::Migration
       t.datetime :created_at
       t.datetime :updated_at
     end
+
+    add_index :prizes, :category_id
   end
 
   def self.down
