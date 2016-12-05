@@ -1,2 +1,0 @@
-class HackimotoController < ApplicationController
-end

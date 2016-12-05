@@ -1,0 +1,2 @@
+module HackimotosHelper
+end
