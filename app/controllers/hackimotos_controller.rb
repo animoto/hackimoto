@@ -1,6 +1,6 @@
 class HackimotosController < ApplicationController
   def index
-
+    @hackimotos = Hackimoto.all
   end
 
   def show

@@ -1,6 +1,6 @@
 class HackimotosController < ApplicationController
   def index
-
+    @hacks = Hack.where({ hackimoto_id: params[:hackimoto_id] })
   end
 
   def show
