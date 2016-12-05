@@ -3,7 +3,6 @@ class CreateCategories < ActiveRecord::Migration
     create_table :categories do |t|
       t.string  :name, :null => false
       t.string  :description
-      t.date    :start_date, :null => false
       t.integer :hackimoto_id, :null => false
 
       t.datetime :created_at
