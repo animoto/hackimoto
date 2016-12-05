@@ -1,4 +1,4 @@
-Hackimoto::Application.routes.draw do
+HackimotoApp::Application.routes.draw do
   resources :hackimotos do
     resources :hacks
     resources :categories do
