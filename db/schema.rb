@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20161205163648) do
   create_table "categories", force: :cascade do |t|
     t.string   "name",         null: false
     t.string   "description"
-    t.date     "start_date",   null: false
     t.integer  "hackimoto_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
