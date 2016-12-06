@@ -6,6 +6,7 @@ gem 'rails', '4.2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'omniauth-google-oauth2'
 
 # Use unicorn as the web server
 # gem 'unicorn'
