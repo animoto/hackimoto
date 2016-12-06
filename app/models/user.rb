@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :hack_users
   has_many :hacks, :through => :hack_users
 
-  validates :email, presence: true, length: { in: 3..100 }, format: { with: Regexp::EMAIL }
+  validates :email, presence: true, length: { in: 3..100 }
   validates_uniqueness_of :email, case_sensitive: false
 
   def self.from_omniauth(auth)
