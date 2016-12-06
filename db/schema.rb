@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20161206174134) do
     t.date     "start_date",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "rule"
   end
 
   create_table "hacks", force: :cascade do |t|
