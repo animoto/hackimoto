@@ -12,82 +12,64 @@
         Judges
       </h2>
     <ul class="list-style-none row">
-      <li class="col-sm-12 col-md-4">
-        <div data-picture="data-picture" class="fc-image eq-image">
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Becky-Brooks_1416857617.jpg"></div>
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Becky-Brooks@2x_1416857626.jpg" data-media="(-webkit-min-device-pixel-ratio: 1.5)"></div>
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Becky-Brooks@2x_1416857626.jpg" data-media="(min-resolution: 144dpi)"></div>
-          <noscript>
-            &lt;img class="tm-image" src="https://d14pr3cu5atb0x.cloudfront.net/cms/Becky-Brooks_1416857617.jpg"&gt;
-          </noscript>
-        <img alt="null" src="https://d14pr3cu5atb0x.cloudfront.net/cms/Becky-Brooks_1416857617.jpg"></div>
-        <h3 class="label h5">Becky, Head of Customer Owners</h3>
-      </li>
-      <li class="col-sm-12 col-md-4">
-        <div data-picture="data-picture" class="fc-image eq-image">
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Lincoln-Ritter_1421877008.jpg"></div>
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Lincoln-Ritter@2x_1421877025.jpg" data-media="(-webkit-min-device-pixel-ratio: 1.5)"></div>
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Lincoln-Ritter@2x_1421877025.jpg" data-media="(min-resolution: 144dpi)"></div>
-          <noscript>
-            &lt;img class="tm-image" src="https://d14pr3cu5atb0x.cloudfront.net/cms/Lincoln-Ritter_1421877008.jpg"&gt;
-          </noscript>
-        <img alt="null" src="https://d14pr3cu5atb0x.cloudfront.net/cms/Lincoln-Ritter_1421877008.jpg"></div>
-        <h3 class="label h5">Lincoln, Director of Engineering</h3>
-      </li>
-      <li class="col-sm-12 col-md-4">
-        <div data-picture="data-picture" class="fc-image eq-image">
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Siddarth-Jain_1421877868.jpg"></div>
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Siddarth-Jain@2x_1421877882.jpg" data-media="(-webkit-min-device-pixel-ratio: 1.5)"></div>
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Siddarth-Jain@2x_1421877882.jpg" data-media="(min-resolution: 144dpi)"></div>
-          <noscript>
-            &lt;img class="tm-image" src="https://d14pr3cu5atb0x.cloudfront.net/cms/Siddarth-Jain_1421877868.jpg"&gt;
-          </noscript>
-        <img alt="null" src="https://d14pr3cu5atb0x.cloudfront.net/cms/Siddarth-Jain_1421877868.jpg"></div>
-        <h3 class="label h5">Sid, VP of Engineering</h3>
-      </li>
+      <% max_lines = @hackimoto.judge_users.length / 3 %>
+        <% last_line_num = @hackimoto.judge_users.length % 3 %>
+        <% @hackimoto.judge_users.each_with_index do |user, i| %>
+          <% if (i + 1) % 3 == 1 %>
+            <div class="row">
+          <% end %>
+          <% if i / 3 == max_lines %>
+            <% if last_line_num == 1 %>
+              <% class_for_category = "col-sm-12 col-md-offset-4 col-md-4" %>
+            <% else %>
+              <% class_for_category = "col-sm-12 col-md-offset-2 col-md-4" %>
+            <% end %>
+          <% else %>
+            <% class_for_category = "col-sm-12 col-md-4" %>
+          <% end %>
+          <li class="<%= class_for_category %>">
+            <div data-picture="data-picture" class="fc-image eq-image">
+            <img alt="null" src="<%= user.profile_pic %>"></div>
+            <h3 class="label h5"><%= user.first_name %> <%= user.last_name %></h3>
+          </li>
+          <% if (i + 1) % 3 == 0 || @hackimoto.judge_users.length == (i + 1) %>
+            </div>
+          <% end %>
+        <% end %>
     </ul>
   </div>
 </div>
 <div class="features-callout">
   <div class="container">
     <div class="accent-line dark"></div>
-      <h2 class="fc-header">
-        Hackmasters
-      </h2>
+    <h2 class="fc-header">
+      Hackmasters
+    </h2>
     <ul class="list-style-none row">
-      <li class="col-sm-12 col-md-4">
-        <div data-picture="data-picture" class="fc-image eq-image">
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Becky-Brooks_1416857617.jpg"></div>
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Becky-Brooks@2x_1416857626.jpg" data-media="(-webkit-min-device-pixel-ratio: 1.5)"></div>
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Becky-Brooks@2x_1416857626.jpg" data-media="(min-resolution: 144dpi)"></div>
-          <noscript>
-            &lt;img class="tm-image" src="https://d14pr3cu5atb0x.cloudfront.net/cms/Becky-Brooks_1416857617.jpg"&gt;
-          </noscript>
-        <img alt="null" src="https://d14pr3cu5atb0x.cloudfront.net/cms/Becky-Brooks_1416857617.jpg"></div>
-        <h3 class="label h5">Becky, Head of Customer Owners</h3>
-      </li>
-      <li class="col-sm-12 col-md-4">
-        <div data-picture="data-picture" class="fc-image eq-image">
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Lincoln-Ritter_1421877008.jpg"></div>
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Lincoln-Ritter@2x_1421877025.jpg" data-media="(-webkit-min-device-pixel-ratio: 1.5)"></div>
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Lincoln-Ritter@2x_1421877025.jpg" data-media="(min-resolution: 144dpi)"></div>
-          <noscript>
-            &lt;img class="tm-image" src="https://d14pr3cu5atb0x.cloudfront.net/cms/Lincoln-Ritter_1421877008.jpg"&gt;
-          </noscript>
-        <img alt="null" src="https://d14pr3cu5atb0x.cloudfront.net/cms/Lincoln-Ritter_1421877008.jpg"></div>
-        <h3 class="label h5">Lincoln, Director of Engineering</h3>
-      </li>
-      <li class="col-sm-12 col-md-4">
-        <div data-picture="data-picture" class="fc-image eq-image">
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Siddarth-Jain_1421877868.jpg"></div>
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Siddarth-Jain@2x_1421877882.jpg" data-media="(-webkit-min-device-pixel-ratio: 1.5)"></div>
-          <div data-src="https://d14pr3cu5atb0x.cloudfront.net/cms/Siddarth-Jain@2x_1421877882.jpg" data-media="(min-resolution: 144dpi)"></div>
-          <noscript>
-            &lt;img class="tm-image" src="https://d14pr3cu5atb0x.cloudfront.net/cms/Siddarth-Jain_1421877868.jpg"&gt;
-          </noscript>
-        <img alt="null" src="https://d14pr3cu5atb0x.cloudfront.net/cms/Siddarth-Jain_1421877868.jpg"></div>
-        <h3 class="label h5">Sid, VP of Engineering</h3>
-      </li>
+      <% max_lines = @hackimoto.admin_users.length / 3 %>
+        <% last_line_num = @hackimoto.admin_users.length % 3 %>
+        <% @hackimoto.admin_users.each_with_index do |user, i| %>
+          <% if (i + 1) % 3 == 1 %>
+            <div class="row">
+          <% end %>
+          <% if i / 3 == max_lines %>
+            <% if last_line_num == 1 %>
+              <% class_for_category = "col-sm-12 col-md-offset-4 col-md-4" %>
+            <% else %>
+              <% class_for_category = "col-sm-12 col-md-offset-2 col-md-4" %>
+            <% end %>
+          <% else %>
+            <% class_for_category = "col-sm-12 col-md-4" %>
+          <% end %>
+          <li class="<%= class_for_category %>">
+            <div data-picture="data-picture" class="fc-image eq-image">
+            <img alt="null" src="<%= user.profile_pic %>"></div>
+            <h3 class="label h5"><%= user.first_name %> <%= user.last_name %></h3>
+          </li>
+          <% if (i + 1) % 3 == 0 || @hackimoto.admin_users.length == (i + 1) %>
+            </div>
+          <% end %>
+        <% end %>
     </ul>
   </div>
 </div>
