@@ -1,78 +1,31 @@
 <%= render partial: "top_section", locals: { name: @hackimoto.name, description: @hackimoto.description, start_date: @hackimoto.start_date.strftime("%B %d, %Y") } %>
-<%= render partial: "categories" %>
-<style>
-  .eq-image img {
-    border-radius: 50%;
-  }
-</style>
-<div class="features-callout module-divider">
-  <div class="container">
-    <div class="accent-line dark"></div>
-      <h2 class="fc-header">
-        Judges
-      </h2>
-    <ul class="list-style-none row">
-      <% max_lines = @hackimoto.judge_users.length / 3 %>
-        <% last_line_num = @hackimoto.judge_users.length % 3 %>
-        <% @hackimoto.judge_users.each_with_index do |user, i| %>
-          <% if (i + 1) % 3 == 1 %>
-            <div class="row">
-          <% end %>
-          <% if i / 3 == max_lines %>
-            <% if last_line_num == 1 %>
-              <% class_for_category = "col-sm-12 col-md-offset-4 col-md-4" %>
-            <% else %>
-              <% class_for_category = "col-sm-12 col-md-offset-2 col-md-4" %>
+<% if @hackimoto.categories.length > 0 %>
+  <%= render partial: "categories" %>
+<% end %>
+<% if @hackimoto.rule %>
+  <div class="features-callout module-divider">
+    <div class="container">
+      <div class="accent-line dark"></div>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <h2 class="fc-header">
+            Rules
+            <% @hackimoto.rule.split("\n").each do |line| %>
+            <small><%= line %></small>
             <% end %>
-          <% else %>
-            <% class_for_category = "col-sm-12 col-md-4" %>
-          <% end %>
-          <li class="<%= class_for_category %>">
-            <div data-picture="data-picture" class="fc-image eq-image">
-            <img alt="null" src="<%= user.profile_pic %>"></div>
-            <h3 class="label h5"><%= user.first_name %> <%= user.last_name %></h3>
-          </li>
-          <% if (i + 1) % 3 == 0 || @hackimoto.judge_users.length == (i + 1) %>
-            </div>
-          <% end %>
-        <% end %>
-    </ul>
+          </h2>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-<div class="features-callout">
-  <div class="container">
-    <div class="accent-line dark"></div>
-    <h2 class="fc-header">
-      Hackmasters
-    </h2>
-    <ul class="list-style-none row">
-      <% max_lines = @hackimoto.admin_users.length / 3 %>
-        <% last_line_num = @hackimoto.admin_users.length % 3 %>
-        <% @hackimoto.admin_users.each_with_index do |user, i| %>
-          <% if (i + 1) % 3 == 1 %>
-            <div class="row">
-          <% end %>
-          <% if i / 3 == max_lines %>
-            <% if last_line_num == 1 %>
-              <% class_for_category = "col-sm-12 col-md-offset-4 col-md-4" %>
-            <% else %>
-              <% class_for_category = "col-sm-12 col-md-offset-2 col-md-4" %>
-            <% end %>
-          <% else %>
-            <% class_for_category = "col-sm-12 col-md-4" %>
-          <% end %>
-          <li class="<%= class_for_category %>">
-            <div data-picture="data-picture" class="fc-image eq-image">
-            <img alt="null" src="<%= user.profile_pic %>"></div>
-            <h3 class="label h5"><%= user.first_name %> <%= user.last_name %></h3>
-          </li>
-          <% if (i + 1) % 3 == 0 || @hackimoto.admin_users.length == (i + 1) %>
-            </div>
-          <% end %>
-        <% end %>
-    </ul>
-  </div>
-</div>
+<% end %>
+<% if @hackimoto.judge_users.length > 0 %>
+  <%= render partial: "judges" %>
+<% end %>
+<% if @hackimoto.admin_users.length > 0 %>
+  <%= render partial: "hackmasters" %>
+<% end %>
+
 <h2>Categories</h2>
 <% @hackimoto.categories.each do |category| %>
   <div>
@@ -81,15 +34,15 @@
       <% category.prizes.each do |prize| %>
         <li><%= prize.rank.ordinalize %> place: $<%= prize.amount %></li>
       <% end %>
-      <li><a href=<%= new_hackimoto_category_prize_path({ hackimoto_id: @hackimoto.id, category_id: category.id }) %>>Create</a></li>
+      <li><a href=<%= new_hackimoto_category_prize_path({ hackimoto_id: @hackimoto.id, category_id: category.id }) %>>Create prize</a></li>
     </ul>
   </div>
 <% end %>
-<a href=<%= new_hackimoto_category_path(@hackimoto) %>>Create</a>
+<a href=<%= new_hackimoto_category_path(@hackimoto) %>>Create category</a>
 <h2>Hacks</h2>
 <% @hackimoto.hacks.each do |hack| %>
   <div>
     <%= hack.name %> - <%= hack.description %> <%= button_to "Delete", hackimoto_hack_path({ hackimoto_id: @hackimoto.id, id: hack.id }), method: :delete %>
   </div>
 <% end %>
-<a href=<%= new_hackimoto_hack_path(@hackimoto) %>>Create</a>
+<a href=<%= new_hackimoto_hack_path(@hackimoto) %>>Create hack</a>
