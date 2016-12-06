@@ -2,19 +2,13 @@
 <html>
   <head>
     <title>Hackimoto</title>
+    <link rel="stylesheet" media="screen" href="https://d14pr3cu5atb0x.cloudfront.net/pkg/css/chimera-1ea590d69b.css">
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div>
-      <% if current_user %>
-        Signed in as <strong><%= current_user.email %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
-      <% else %>
-        <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-      <% end %>
-    </div>
+    <%= render "shared/nav" %>
     <div>
     <%= yield %>
     </div>

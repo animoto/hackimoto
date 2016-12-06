@@ -1,0 +1,42 @@
+<%-
+suppress_nav = yield(:suppress_nav).blank? ? false : yield(:suppress_nav)
+-%>
+<div id="js-global-header" class="global-header">
+  <div class="gh-wrapper">
+    <div class="container gh-container">
+      <div class="row gh-row">
+        <div class="gh-logo col-sm-offset-1 col-sm-5 col-md-offset-0 col-md-3">
+          <a href="/" class="logo logo-color logo-text gh-logo-img"><span>Animoto</span></a>
+        </div>
+        <div class="gh-nav col-sm-6 col-md-9">
+          <!--  desktop/landscape tablet nav -->
+          <div class="hide-when-sm desktop-nav">
+            <ul class="body-text-sm label list-style-none grey-links gh-list">
+              <% unless suppress_nav %>
+                <li class="gh-list-item"><a class="gh-link" href="/hackimotos">Hackimotos</a></li>
+              <% end %>
+              <!-- login button -->
+              <% if current_user %>
+                <li class="gh-logged-in gh-logged-in-padding grey-link gh-list-item caret-wrapper">
+                  <div class="fb-icon-header pull-left">
+                    <%= image_tag('/images/fb-default-avatar.png', :width => 30, :height => 30, :class => "fb-profile-image") %>
+                  </div>
+                    <%= current_user.email %>
+                    <span class="caret"></span>
+                  <ul class="gh-logged-in-menu list-style-none">
+                    <li class="gh-list-item"><a class="gh-link" href=<%= signout_path %>>Log out</a></li>
+                  </ul>
+                </li>
+              <% else %>
+                <li class="gh-list-item"><a class="gh-link" href="/auth/google_oauth2">Log in</a></li>
+              <% end %>
+            </ul>
+          </div>
+          <!-- hamburger nav icon to open mobile nav -->
+          <a href="#" class="js-dropdownControl hamburger gh-hamburger hide-when-desktop hide-text pull-right">menu</a>
+        </div>
+      </div>
+
+      </div>
+  </div>
+</div>

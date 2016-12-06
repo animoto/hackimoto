@@ -1,0 +1,43 @@
+<style>
+  .hero-video-bg .hvb-poster {
+    background: #1bcdcf;
+  }
+  .hero-video-bg.hvb-short {
+    height: 496px;
+    padding: 0;
+  }
+  @media (min-width: 768px) {
+    .hero-video-bg.hvb-short {
+      height: 424px;
+    }
+  }
+  .hvb-arrow.hvb-arrow-static {
+    top: 24px;
+  }
+  .hero-video-bg .hvb-arrow {
+    top: 24px ;
+  }
+  @media (max-width: 767px) and (min-width: 0) {
+    .hero-video-bg .hvb-poster {
+      background-position-x: 0;
+    }
+  }
+</style>
+
+<div class="hero-video-bg hvb-short">
+  <div class="hvb-poster"></div>
+  <div class="container full-height">
+    <div class="row vertical-center-wrap">
+      <div class="vertical-center-content">
+        <div class="col-sm-12 col-md-offset-1 col-md-10 make-relative">
+          <h1 class="inverted no-margin-bottom"><%= name %>
+            <small class="inverted small no-margin-bottom"><%= description %></small>
+            <small class="inverted small no-margin-bottom"><%= start_date %></small>
+          </h1>
+          <a href="/sign_up" class="button  hide-when-desktop  margin-top-4 ">Get Started</a>
+          <a href="/pricing" class="hih-button button button-child-on-color hide-when-desktop margin-top-4 ">View Pricing</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
