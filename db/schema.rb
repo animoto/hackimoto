@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205163648) do
+ActiveRecord::Schema.define(version: 20161206174134) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",         null: false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20161205163648) do
     t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "profile_pic"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"

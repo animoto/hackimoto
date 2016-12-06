@@ -9,7 +9,8 @@
   <body>
     <div>
       <% if current_user %>
-        Signed in as <strong><%= current_user.email %></strong>!
+        <img src=<%= current_user.profile_pic%> />
+        Signed in as <strong><%= current_user.first_name+" "+current_user.last_name %></strong>!  
         <%= link_to "Sign out", signout_path, id: "sign_out" %>
       <% else %>
         <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
