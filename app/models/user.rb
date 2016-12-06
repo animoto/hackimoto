@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   has_many :hack_users
   has_many :hacks, :through => :hack_users
 
+  validates :email, presence: true, length: { in: 3..100 }
+  validates_uniqueness_of :email, case_sensitive: false
+
   def self.from_omniauth(auth)
     where(email: auth.info.email).first_or_initialize.tap do |user|
       #user.provider = auth.provider
