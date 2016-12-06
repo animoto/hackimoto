@@ -11,6 +11,8 @@ end
 
 gem 'omniauth-google-oauth2'
 
+gem 'pg'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
