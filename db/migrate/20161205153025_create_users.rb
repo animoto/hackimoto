@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :last_name
       t.string :email, :null => false
       t.string :oauth_token
+      t.string :profile_pic
 
       t.datetime :oauth_expires_at
       t.datetime :created_at
