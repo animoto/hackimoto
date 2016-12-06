@@ -3,4 +3,7 @@ class Hackimoto < ActiveRecord::Base
   has_many :hackimoto_admin_users
   has_many :hacks
   has_many :admin_users, :through => :hackimoto_admin_users, :source => :user
+
+  scope :active, lambda { last }
+
 end
