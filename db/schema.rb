@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 20161206174134) do
 
   add_index "hacks", ["hackimoto_id"], name: "index_hacks_on_hackimoto_id"
 
+  create_table "judges", force: :cascade do |t|
+    t.integer  "hackimoto_id", null: false
+    t.integer  "user_id",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "judges", ["hackimoto_id"], name: "index_judges_on_hackimoto_id"
+  add_index "judges", ["user_id"], name: "index_judges_on_user_id"
+
   create_table "prizes", force: :cascade do |t|
     t.integer  "category_id", null: false
     t.integer  "amount",      null: false
