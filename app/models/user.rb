@@ -16,4 +16,12 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
+
+  def is_super_admin?
+    ['jay.sirju@animoto.com', 'michael.yan@animoto.com', 'norris.nakagaki@animoto.com', 'paul.yokota@animoto.com'].include?(email)
+  end
+
+  def is_admin?(hackimoto)
+    hackimoto.admin_users.include? self
+  end
 end

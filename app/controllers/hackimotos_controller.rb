@@ -1,4 +1,6 @@
 class HackimotosController < ApplicationController
+  before_filter :super_admin_required, only: [:new, :create, :update, :destroy]
+
   def index
     @hackimotos = Hackimoto.all
   end
@@ -34,5 +36,4 @@ class HackimotosController < ApplicationController
   def hackimoto_params
     params.require(:hackimoto).permit(:name, :description, :start_date)
   end
-
 end
