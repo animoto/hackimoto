@@ -5,7 +5,10 @@ gem 'rails', '4.2'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :development, :test do
+  gem 'sqlite3'
+end
+
 gem 'omniauth-google-oauth2'
 
 # Use unicorn as the web server
