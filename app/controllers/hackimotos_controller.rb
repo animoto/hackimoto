@@ -1,5 +1,5 @@
 class HackimotosController < ApplicationController
-  before_filter :super_admin_required, only: [:new, :create, :update, :destroy]
+  before_filter :login_required, :super_admin_required, only: [:new, :create, :update, :destroy]
 
   def index
     @hackimotos = Hackimoto.all
