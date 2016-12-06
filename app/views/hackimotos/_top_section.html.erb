@@ -17,22 +17,38 @@
       background-position-x: 0;
     }
   }
+  .fixed-bottom-button {
+    position: absolute;
+    bottom: 36px;
+    transform: translate(-50%);
+  }
+  .hackimoto-image {
+    background-image: url('/images/allseeingimoto.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 280px;
+    margin-top: 16px;
+  }
 </style>
 
 <div class="hero-video-bg hvb-short">
   <div class="hvb-poster"></div>
   <div class="container full-height">
-    <div class="row vertical-center-wrap">
-      <div class="vertical-center-content">
-        <div class="col-sm-12 col-md-offset-1 col-md-10 make-relative">
-          <h1 class="inverted no-margin-bottom"><%= name %>
-            <small class="inverted small no-margin-bottom"><%= description %></small>
-            <small class="inverted small no-margin-bottom"><%= start_date %></small>
-          </h1>
-          <a href="/sign_up" class="button  hide-when-desktop  margin-top-4 ">Get Started</a>
-          <a href="/pricing" class="hih-button button button-child-on-color hide-when-desktop margin-top-4 ">View Pricing</a>
+    <% if name == "Hackimoto 10" %>
+      <div class="hackimoto-image"></div>
+    <% else %>
+      <div class="row vertical-center-wrap">
+        <div class="vertical-center-content">
+          <div class="col-sm-12 col-md-offset-1 col-md-10">
+            <h1 class="inverted no-margin-bottom"><%= name %>
+              <small class="inverted small no-margin-bottom"><%= description %></small>
+              <small class="inverted small no-margin-bottom"><%= start_date %></small>
+            </h1>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
+  <a href="<%= hackimoto_hacks_path(@hackimoto) %>" class="button fixed-bottom-button">See the hacks</a>
 </div>
