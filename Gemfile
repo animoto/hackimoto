@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rails', '4.2'
-gem 'omniauth-google-oauth2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -10,10 +9,7 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
-end
+gem 'omniauth-google-oauth2'
 
 # Use unicorn as the web server
 # gem 'unicorn'
