@@ -7,8 +7,14 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by email: (session[:user_id]) if session[:user_id]
   end
 
+  def login_required
+    if !current_user
+      redirect_to hackimotos_path
+    end
+  end
+
   def super_admin_required
-    if !current_user.is_super_admin?
+    if current_user && !current_user.is_super_admin?
       redirect_to hackimotos_path
     end
   end
