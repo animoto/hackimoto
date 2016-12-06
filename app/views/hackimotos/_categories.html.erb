@@ -1,0 +1,41 @@
+<div class="features-callout module-divider no-padding-bottom">
+  <div class="container">
+      <h2 class="fc-header-alt padding-bottom-4">
+        Categories and Awards
+      </h2>
+      <ul class="list-style-none row">
+        <% max_lines = @hackimoto.categories.length / 3 %>
+        <% last_line_num = @hackimoto.categories.length % 3 %>
+        <% @hackimoto.categories.each_with_index do |category, i| %>
+          <% if (i + 1) % 3 == 1 %>
+            <div class="row">
+          <% end %>
+          <% if i / 3 == max_lines %>
+            <% if last_line_num == 1 %>
+              <% class_for_category = "col-sm-12 col-md-offset-4 col-md-4 fc-list-item" %>
+            <% else %>
+              <% class_for_category = "col-sm-12 col-md-offset-2 col-md-4 fc-list-item" %>
+            <% end %>
+          <% else %>
+            <% class_for_category = "col-sm-12 col-md-4 fc-list-item" %>
+          <% end %>
+          <li class="<%= class_for_category %>">
+            <h3 class="label h4 no-margin-bottom">
+              <%= category.name %>
+            </h3>
+            <p class="fc-copy-features small">
+              <%= category.description %>
+            </p>
+            <ul class="list-style-none margin-bottom-3">
+            <% category.prizes.each do |prize| %>
+              <li class="small"><%= prize.rank.ordinalize %> place: $<%= prize.amount %></li>
+            <% end %>
+            </ul>
+          </li>
+          <% if (i + 1) % 3 == 0 || @hackimoto.categories.length == (i + 1) %>
+            </div>
+          <% end %>
+        <% end %>
+      </ul>
+  </div>
+</div>

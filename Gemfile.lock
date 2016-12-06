@@ -127,6 +127,3 @@ DEPENDENCIES
   omniauth-google-oauth2
   rails (= 4.2)
   sqlite3
-
-BUNDLED WITH
-   1.13.6

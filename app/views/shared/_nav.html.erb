@@ -18,10 +18,8 @@ suppress_nav = yield(:suppress_nav).blank? ? false : yield(:suppress_nav)
               <!-- login button -->
               <% if current_user %>
                 <li class="gh-logged-in gh-logged-in-padding grey-link gh-list-item caret-wrapper">
-                  <div class="fb-icon-header pull-left">
-                    <%= image_tag('/images/fb-default-avatar.png', :width => 30, :height => 30, :class => "fb-profile-image") %>
-                  </div>
-                    <%= current_user.email %>
+                    <%= current_user.first_name %>
+                    <%= current_user.last_name.chars.first %>
                     <span class="caret"></span>
                   <ul class="gh-logged-in-menu list-style-none">
                     <li class="gh-list-item"><a class="gh-link" href=<%= signout_path %>>Log out</a></li>
