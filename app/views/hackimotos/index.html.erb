@@ -36,7 +36,7 @@
     <% @hackimotos.each do |hackimoto| %>
       <div>
         <div class="pull-left">
-          <a href="<%= hackimoto_path(hackimoto) %>"><%= hackimoto.name %> - <%= hackimoto.start_date.strftime("%B %d, %Y") %></a>
+          <a href="<%= hackimoto_path(hackimoto) %>" class="blue-link"><%= hackimoto.name %></a> - <%= hackimoto.start_date.strftime("%B %d, %Y") %>
         </div>
         <%= button_to "", hackimoto_path({ id: hackimoto.id }), method: :delete, :class => 'icon-trash input-fix' %>
       </div>
