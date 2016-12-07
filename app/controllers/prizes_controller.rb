@@ -5,6 +5,11 @@ class PrizesController < ApplicationController
     @prize = Prize.new({ category: @category })
   end
 
+  def edit
+    @prize = Prize.find(params[:id])
+    render :new
+  end
+
   def create
     @prize = @category.prizes.new(prize_params)
 
@@ -16,7 +21,9 @@ class PrizesController < ApplicationController
   end
 
   def update
-
+    @prize = Prize.find(params[:id])
+    @prize.update(prize_params)
+    redirect_to hackimoto_path(id: @hackimoto.id)
   end
 
   def destroy
