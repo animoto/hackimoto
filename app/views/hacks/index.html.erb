@@ -96,7 +96,7 @@
           <% end %>
         <% end %>
     </ul>
-    <% if current_user.hack_users.length == 0 %>
+    <% if current_user && current_user.hack_users.length == 0 %>
       <%= button_to "Register", register_to_hackimoto_path({ hackimoto_id: @hackimoto.id }), method: :post, :class => "button margin-top-6" %>
     <% end %>
   </div>
