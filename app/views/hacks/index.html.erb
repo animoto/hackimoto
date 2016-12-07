@@ -44,12 +44,12 @@
       <% end %>
     </ul>
     <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
+      <div class="col-sm-6 col-sm-offset-3 text-left">
         <%= form_for :hack, url: hackimoto_hacks_path do |f| %>
-          <%= f.label :name %>:
+          <%= f.label :name, "Name", :class => "h6 label" %>
           <%= f.text_field :name %><br />
 
-          <%= f.label :description %>:
+          <%= f.label :description, "Description", :class => "h6 label" %>
           <%= f.text_area :description %><br />
 
           <div class="text-center">
