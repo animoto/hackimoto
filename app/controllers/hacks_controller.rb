@@ -17,9 +17,9 @@ class HacksController < ApplicationController
     @hack = @hackimoto.hacks.new(hacks_params.merge({ proposed_user_id: current_user.id }))
 
     if @hack.save
-      redirect_to hackimoto_path({ id: @hackimoto })
+      redirect_to hackimoto_hacks_path({ id: @hackimoto })
     else
-      redirect_to hackimoto_path({ id: @hackimoto })
+      redirect_to hackimoto_hacks_path({ id: @hackimoto })
     end
   end
 
@@ -28,7 +28,10 @@ class HacksController < ApplicationController
   end
 
   def destroy
+    @hack = Hack.find(params[:id])
+    @hack.destroy
 
+    redirect_to hackimoto_path({ id: @hackimoto })
   end
 
   private
