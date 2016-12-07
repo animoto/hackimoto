@@ -26,23 +26,33 @@
   <%= render partial: "hackmasters" %>
 <% end %>
 
-<h2>Categories</h2>
-<% @hackimoto.categories.each do |category| %>
-  <div>
-    <%= category.name %> - <%= category.description %> <%= button_to "Delete", hackimoto_category_path({ hackimoto_id: @hackimoto.id, id: category.id }), method: :delete %>
-    <ul>
-      <% category.prizes.each do |prize| %>
-        <li><%= prize.rank.ordinalize %> place: $<%= prize.amount %></li>
-      <% end %>
-      <li><a href=<%= new_hackimoto_category_prize_path({ hackimoto_id: @hackimoto.id, category_id: category.id }) %>>Create prize</a></li>
-    </ul>
-  </div>
-<% end %>
-<a href=<%= new_hackimoto_category_path(@hackimoto) %>>Create category</a>
-<h2>Hacks</h2>
-<% @hackimoto.hacks.each do |hack| %>
-  <div>
-    <%= hack.name %> - <%= hack.description %> <%= button_to "Delete", hackimoto_hack_path({ hackimoto_id: @hackimoto.id, id: hack.id }), method: :delete %>
-  </div>
-<% end %>
-<a href=<%= new_hackimoto_hack_path(@hackimoto) %>>Create hack</a>
+<div class="container margin-bottom-5">
+  <h2 class="text-center margin-top-3">Admin area</h2>
+
+  <h3>Categories</h3>
+  <% @hackimoto.categories.each do |category| %>
+    <div>
+      <div class="pull-left">
+        <%= category.name %> - <%= category.description %>
+      </div>
+      <%= link_to "", hackimoto_category_path({ hackimoto_id: @hackimoto.id, id: category.id }), method: :delete, :class => 'icon-trash' %>
+      <ul>
+        <% category.prizes.each do |prize| %>
+          <li><%= prize.rank.ordinalize %> place: $<%= prize.amount %></li>
+        <% end %>
+        <li><a href="<%= new_hackimoto_category_prize_path({ hackimoto_id: @hackimoto.id, category_id: category.id }) %>" class="blue-link">Create prize</a></li>
+      </ul>
+    </div>
+  <% end %>
+  <a href="<%= new_hackimoto_category_path(@hackimoto) %>" class="button button-small">Create category</a>
+  <h3 class="margin-top-5">Hacks</h3>
+  <% @hackimoto.hacks.each do |hack| %>
+    <div class="margin-bottom-2">
+      <div class="pull-left">
+        <%= hack.name %> - <%= hack.description %>
+      </div>
+      <%= link_to "", hackimoto_hack_path({ hackimoto_id: @hackimoto.id, id: hack.id }), method: :delete, :class => 'icon-trash' %>
+    </div>
+  <% end %>
+  <a href="<%= new_hackimoto_hack_path(@hackimoto) %>" class="button button-small no-margin">Create hack</a>
+</div>
