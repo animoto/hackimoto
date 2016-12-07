@@ -11,4 +11,6 @@ HackimotoApp::Application.routes.draw do
       resources :prizes, except: [:index, :show]
     end
   end
+
+  post '/register_to_hackimoto', controller: :users, action: :register_to_hackimoto, as: :register_to_hackimoto
 end
