@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207184222) do
+ActiveRecord::Schema.define(version: 20161207185951) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",         null: false
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20161207184222) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "rule"
-    t.boolean  "is_myagi?"
+    t.boolean  "is_myagi"
   end
 
   create_table "hacks", force: :cascade do |t|
