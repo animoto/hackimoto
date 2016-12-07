@@ -1,12 +1,39 @@
 <div class="hero-video-bg hvb-short">
   <div class="hvb-poster"></div>
   <div class="container full-height">
+    <div class="hackimoto-index-image"></div>
   </div>
 </div>
-<h1>Hackimotos</h1>
+<% @hackimoto_by_year.each do |year, hackimotos| %>
+  <div class="features-callout module-divider">
+    <div class="container">
+      <div class="accent-line dark"></div>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <h2 class="fc-header">
+            <%= year %>
+          </h2>
+        </div>
+      </div>
+      <div class="row">
+        <% if hackimotos.length == 2 %>
+          <div class="col-sm-2 color-transparent">dummy content</div>
+        <% else %>
+          <div class="col-sm-4 color-transparent">dummy content</div>
+        <% end %>
+        <% hackimotos.each do |hackimoto| %>
+          <div class="col-sm-4">
+            <div class="h4 label margin-bottom-2"><%= hackimoto.is_myagi ? "MYAGI" : "YETI" %></div>
+            <a href="<%= hackimoto_path(hackimoto) %>" class="h4 label blue-link"><%= hackimoto.name %></a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
 <% @hackimotos.each do |hackimoto| %>
   <div>
-    <a href=<%= hackimoto_path(hackimoto) %>><%= hackimoto.name %> - <%= hackimoto.start_date.strftime("%B %d, %Y") %></a>
+    <a href="<%= hackimoto_path(hackimoto) %>"><%= hackimoto.name %> - <%= hackimoto.start_date.strftime("%B %d, %Y") %></a>
   </div>
 <% end %>
 <a href=<%= new_hackimoto_path %>>Create</a>

@@ -2,7 +2,15 @@ class HackimotosController < ApplicationController
   before_filter :login_required, :super_admin_required, only: [:new, :create, :update, :destroy]
 
   def index
-    @hackimotos = Hackimoto.all
+    @hackimotos = Hackimoto.all.order(start_date: :desc)
+    @hackimoto_by_year = {}
+    @hackimotos.each do |hackimoto|
+      if @hackimoto_by_year[hackimoto.start_date.year]
+        @hackimoto_by_year[hackimoto.start_date.year].push(hackimoto)
+      else
+        @hackimoto_by_year[hackimoto.start_date.year] = [hackimoto]
+      end
+    end
   end
 
   def show
