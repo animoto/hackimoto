@@ -67,9 +67,9 @@
         Hackers
       </h2>
     <ul class="list-style-none row">
-      <% max_lines = @hackimoto.judge_users.length / 3 %>
-        <% last_line_num = @hackimoto.judge_users.length % 3 %>
-        <% @hackimoto.judge_users.each_with_index do |user, i| %>
+      <% max_lines = User.all.length / 3 %>
+        <% last_line_num = User.all.length % 3 %>
+        <% User.all.each_with_index do |user, i| %>
           <% if (i + 1) % 3 == 1 %>
             <div class="row">
           <% end %>
@@ -84,10 +84,10 @@
           <% end %>
           <li class="<%= class_for_category %>">
             <div data-picture="data-picture" class="fc-image eq-image">
-            <img alt="null" src="<%= user.profile_pic %>"></div>
+            <img alt="null" src="<%= user.profile_picture %>"></div>
             <h3 class="label h5"><%= user.first_name %> <%= user.last_name %></h3>
           </li>
-          <% if (i + 1) % 3 == 0 || @hackimoto.judge_users.length == (i + 1) %>
+          <% if (i + 1) % 3 == 0 || User.all.length == (i + 1) %>
             </div>
           <% end %>
         <% end %>
