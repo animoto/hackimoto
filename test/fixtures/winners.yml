@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hackimoto_id: 
+  prize_id: 
+  hack_id: 
+
+two:
+  hackimoto_id: 
+  prize_id: 
+  hack_id: 
