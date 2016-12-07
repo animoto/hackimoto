@@ -8,5 +8,5 @@ class Hackimoto < ActiveRecord::Base
   has_many :hack_users
   has_many :hackers, :through => :hack_users, :source => :user
 
-  scope :active, lambda { last }
+  scope :active, lambda { order(:start_date).last }
 end
