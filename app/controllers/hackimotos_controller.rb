@@ -22,7 +22,7 @@ class HackimotosController < ApplicationController
   end
 
   def create
-    @hackimoto = Hackimoto.new(hackimoto_params)
+    @hackimoto = Hackimoto.new(hackimoto_params.merge({ is_myagi: params[:hackimoto][:is_myagi] == "MYAGI" ? true : false }))
 
     if @hackimoto.save
       redirect_to @hackimoto

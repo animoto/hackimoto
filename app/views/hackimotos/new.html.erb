@@ -9,7 +9,7 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container margin-bottom-6">
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
       <%= form_for @hackimoto do |f| %>
@@ -21,6 +21,9 @@
 
         <%= f.label :rule, "Rule", :class => "h6 label" %>
         <%= f.text_area :rule %>
+
+        <%= f.label :is_myagi, "Yeti or Myagi", :class => "h6 label" %>
+        <%= f.select :is_myagi, ["YETI", "MYAGI"] %>
 
         <%= f.label :start_date, "Start date", :class => "h6 label" %>
         <%= f.date_field :start_date, :class => "input" %>
