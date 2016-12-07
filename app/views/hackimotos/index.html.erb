@@ -35,10 +35,13 @@
   <h2 class="text-center margin-top-3">Admin area</h2>
     <% @hackimotos.each do |hackimoto| %>
       <div>
-        <div class="pull-left">
-          <a href="<%= hackimoto_path(hackimoto) %>" class="blue-link"><%= hackimoto.name %></a> - <%= hackimoto.start_date.strftime("%B %d, %Y") %>
+        <div class="row">
+          <div class="pull-left">
+            <a href="<%= hackimoto_path(hackimoto) %>" class="blue-link"><%= hackimoto.name %></a> - <%= hackimoto.start_date.strftime("%B %d, %Y") %>
+          </div>
+          <%= link_to "", edit_hackimoto_path({ id: hackimoto.id }), :class => 'icon-edit input-fix pull-left' %>
+          <%= button_to "", hackimoto_path({ id: hackimoto.id }), method: :delete, form_class: 'pull-left', :class => 'icon-trash input-fix' %>
         </div>
-        <%= button_to "", hackimoto_path({ id: hackimoto.id }), method: :delete, :class => 'icon-trash input-fix' %>
       </div>
     <% end %>
     <a href="<%= new_hackimoto_path %>" class="button button-small margin-top-2">Create</a>

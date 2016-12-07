@@ -21,8 +21,14 @@ class HackimotosController < ApplicationController
     @hackimoto = Hackimoto.new
   end
 
+  def edit
+    @hackimoto = Hackimoto.find(params[:id])
+
+    render :new
+  end
+
   def create
-    @hackimoto = Hackimoto.new(hackimoto_params.merge({ is_myagi: params[:hackimoto][:is_myagi] == "MYAGI" ? true : false }))
+    @hackimoto = Hackimoto.new(hackimoto_params)
 
     if @hackimoto.save
       redirect_to @hackimoto
@@ -32,7 +38,9 @@ class HackimotosController < ApplicationController
   end
 
   def update
-
+    @hackimoto = Hackimoto.find(params[:id])
+    @hackimoto.update(hackimoto_params)
+    redirect_to hackimoto_path(id: @hackimoto.id)
   end
 
   def destroy
@@ -45,6 +53,7 @@ class HackimotosController < ApplicationController
   private
 
   def hackimoto_params
-    params.require(:hackimoto).permit(:name, :description, :start_date)
+    allowed_params = params.require(:hackimoto).permit(:name, :description, :start_date)
+    allowed_params.merge({ is_myagi: params[:hackimoto][:is_myagi] == "MYAGI" ? true : false })
   end
 end
