@@ -23,7 +23,6 @@ class HackimotosController < ApplicationController
 
   def edit
     @hackimoto = Hackimoto.find(params[:id])
-
     render :new
   end
 

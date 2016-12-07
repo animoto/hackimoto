@@ -36,6 +36,7 @@
         <div class="pull-left">
           <%= category.name %> - <%= category.description %>
         </div>
+        <%= link_to "", edit_hackimoto_category_path({ hackimoto_id: @hackimoto.id, id: category.id }), :class => 'icon-edit input-fix pull-left' %>
         <%= button_to "", hackimoto_category_path({ hackimoto_id: @hackimoto.id, id: category.id }), method: :delete, :class => 'icon-trash input-fix' %>
         <ul class="list-style-none">
           <% category.prizes.each do |prize| %>

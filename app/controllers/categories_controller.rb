@@ -5,6 +5,11 @@ class CategoriesController < ApplicationController
     @category = Category.new({ hackimoto: @hackimoto })
   end
 
+  def edit
+    @category = Category.find(params[:id])
+    render :new
+  end
+
   def create
     @category = @hackimoto.categories.new(categories_params)
 
@@ -16,7 +21,9 @@ class CategoriesController < ApplicationController
   end
 
   def update
-
+    @category = Category.find(params[:id])
+    @category.update(categories_params)
+    redirect_to hackimoto_path(id: @hackimoto.id)
   end
 
   def destroy
