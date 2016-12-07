@@ -17,6 +17,7 @@ class HacksController < ApplicationController
     @hack = @hackimoto.hacks.new(hacks_params.merge({ proposed_user_id: current_user.id }))
 
     if @hack.save
+      @hack.hack_users.create({ user_id: current_user.id, hackimoto_id: @hackimoto.id })
       redirect_to hackimoto_hacks_path({ id: @hackimoto })
     else
       redirect_to hackimoto_hacks_path({ id: @hackimoto })
