@@ -31,9 +31,16 @@
     </div>
   </div>
 <% end %>
-<% @hackimotos.each do |hackimoto| %>
-  <div>
-    <a href="<%= hackimoto_path(hackimoto) %>"><%= hackimoto.name %> - <%= hackimoto.start_date.strftime("%B %d, %Y") %></a>
-  </div>
-<% end %>
-<a href=<%= new_hackimoto_path %>>Create</a>
+<div class="container margin-bottom-5">
+  <h2 class="text-center margin-top-3">Admin area</h2>
+    <% @hackimotos.each do |hackimoto| %>
+      <div>
+        <div class="pull-left">
+          <a href="<%= hackimoto_path(hackimoto) %>"><%= hackimoto.name %> - <%= hackimoto.start_date.strftime("%B %d, %Y") %></a>
+        </div>
+        <%= button_to "", hackimoto_path({ id: hackimoto.id }), method: :delete, :class => 'icon-trash input-fix' %>
+      </div>
+    <% end %>
+    <a href="<%= new_hackimoto_path %>" class="button button-small margin-top-2">Create</a>
+  </h2>
+</div>

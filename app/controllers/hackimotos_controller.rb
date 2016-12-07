@@ -36,7 +36,10 @@ class HackimotosController < ApplicationController
   end
 
   def destroy
+    @hackimoto = Hackimoto.find(params[:id])
+    @hackimoto.destroy
 
+    redirect_to hackimotos_path
   end
 
   private
