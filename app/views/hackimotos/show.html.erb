@@ -56,6 +56,22 @@
       </div>
     <% end %>
     <a href="<%= new_hackimoto_category_path(@hackimoto) %>" class="button button-small margin-top-2">Create category</a>
+    <h3 class="margin-top-5">Judges</h3>
+    <% @hackimoto.judge_users.each do |user| %>
+      <div>
+        <div class="pull-left"><%= user.first_name %> <%= user.last_name %></div>
+        <%= button_to "", remove_judge_path({ hackimoto_id: @hackimoto.id, user_id: user.id }), method: :delete, :class => 'icon-trash input-fix' %>
+      </div>
+    <% end %>
+    <a href="<%= add_judge_form_path({ hackimoto_id: @hackimoto.id }) %>" class="button button-small margin-top-2 no-margin-left">Add judge</a>
+    <h3 class="margin-top-5">Hackmasters</h3>
+    <% @hackimoto.admin_users.each do |user| %>
+      <div>
+        <div class="pull-left"><%= user.first_name %> <%= user.last_name %></div>
+        <%= button_to "", remove_admin_path({ hackimoto_id: @hackimoto.id, user_id: user.id }), method: :delete, :class => 'icon-trash input-fix' %>
+      </div>
+    <% end %>
+    <a href="<%= add_admin_form_path({ hackimoto_id: @hackimoto.id }) %>" class="button button-small margin-top-2 no-margin-left">Add hackmaster</a>
     <h3 class="margin-top-5">Hacks</h3>
     <% @hackimoto.hacks.each do |hack| %>
       <div class="margin-bottom-1">

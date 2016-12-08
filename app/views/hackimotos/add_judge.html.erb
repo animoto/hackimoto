@@ -1,0 +1,22 @@
+<div class="page-header-block ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8 inverted text-center">
+        <h1>Add a Judge</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container margin-bottom-6">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <%= form_for @hackimoto, url: add_judge_path(hackimoto_id: @hackimoto.id) do |f| %>
+        <%= f.label :judges, "Select user", :class => "h6 label" %>
+        <%= f.select :judges, User.all.map { |user| [user.first_name + ' ' + user.last_name, user.id] } %>
+        <div class="text-center">
+          <%= f.submit "Create", :class => "button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
