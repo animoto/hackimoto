@@ -62,6 +62,7 @@
         <div class="pull-left">
           <%= hack.name %> - <%= hack.description %>
         </div>
+        <%= link_to "", edit_hackimoto_hack_path({ hackimoto_id: @hackimoto.id, id: hack.id }), :class => 'icon-edit input-fix pull-left' %>
         <%= button_to "", hackimoto_hack_path({ hackimoto_id: @hackimoto.id, id: hack.id }), method: :delete, :class => 'icon-trash input-fix' %>
       </div>
     <% end %>

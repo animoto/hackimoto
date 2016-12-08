@@ -13,6 +13,11 @@ class HacksController < ApplicationController
     @hack = Hack.new({ hackimoto: @hackimoto })
   end
 
+  def edit
+    @hack = Hack.find(params[:id])
+    render :new
+  end
+
   def create
     @hack = @hackimoto.hacks.new(hacks_params.merge({ proposed_user_id: current_user.id }))
 
@@ -25,7 +30,9 @@ class HacksController < ApplicationController
   end
 
   def update
-
+    @hack = Hack.find(params[:id])
+    @hack.update(hacks_params)
+    redirect_to hackimoto_path(id: @hackimoto.id)
   end
 
   def destroy
