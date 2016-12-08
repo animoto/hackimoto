@@ -51,3 +51,13 @@ textarea {
 .color-transparent {
   color: transparent;
 }
+
+.small-profile-pic {
+  height: 32px;
+  width: 32px;
+}
+
+.profile-line {
+  line-height: 32px;
+  padding-left: 56px;
+}

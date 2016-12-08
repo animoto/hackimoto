@@ -1,14 +1,11 @@
 class UsersController < ApplicationController
-  before_filter :define_hackimoto
-
   def register_to_hackimoto
-    current_user.hack_users.create({ hackimoto_id: @hackimoto.id })
-    redirect_to hackimoto_hacks_path(@hackimoto)
+    current_user.hack_users.create({ hackimoto_id: params[:hackimoto_id] })
+    redirect_to hackimoto_hacks_path(params[:hackimoto_id])
   end
 
-  private
-
-  def define_hackimoto
-    @hackimoto = Hackimoto.find(params[:hackimoto_id])
+  def register_to_hack
+    current_user.hack_users.create({ hackimoto_id: params[:hackimoto_id], hack_id: params[:hack_id] })
+    redirect_to hackimoto_hacks_path(params[:hackimoto_id])
   end
 end
