@@ -22,6 +22,9 @@
         <%= f.label :amount, "Amount", :class => "h6 label" %>
         <%= f.text_field :amount %><br />
 
+        <%= f.label :winner, "Winning team", :class => "h6 label" %>
+        <%= f.select :winner, @hackimoto.hacks.map { |hack| [hack.name, hack.id] }, include_blank: "-- no winner --", selected: @prize.winner.try(:hack).try(:id) %>
+
         <div class="text-center">
           <% if new_record %>
           <%= f.submit "Create", :class => "button" %>

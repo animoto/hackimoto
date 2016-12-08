@@ -14,6 +14,9 @@ class PrizesController < ApplicationController
     @prize = @category.prizes.new(prize_params)
 
     if @prize.save
+      if !params[:prize][:winner].blank?
+        Winner.create({ hack_id: params[:prize][:winner], prize_id: @prize.id })
+      end
       redirect_to hackimoto_path(@hackimoto)
     else
       redirect_to hackimoto_path(@hackimoto)
@@ -23,11 +26,25 @@ class PrizesController < ApplicationController
   def update
     @prize = Prize.find(params[:id])
     @prize.update(prize_params)
+    if params[:prize][:winner].blank?
+      if @prize.winner
+        @prize.winner.delete
+      end
+    else
+      if @prize.winner
+        @prize.winner.update({ hack_id: params[:prize][:winner] })
+      else
+        Winner.create({ hack_id: params[:prize][:winner], prize_id: @prize.id })
+      end
+    end
     redirect_to hackimoto_path(id: @hackimoto.id)
   end
 
   def destroy
+    @prize = Prize.find(params[:id])
+    @prize.destroy
 
+    redirect_to hackimoto_path({ id: @hackimoto })
   end
 
   private

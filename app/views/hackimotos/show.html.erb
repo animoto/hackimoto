@@ -42,7 +42,11 @@
           <% category.prizes.each do |prize| %>
             <li>
               <div class="pull-left">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <%= prize.rank.ordinalize %> place: $<%= prize.amount %>
+                <% if prize.winner %>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <%= prize.rank.ordinalize %> place: <%= prize.winner.hack.name %> ($<%= prize.amount %>)
+                <% else %>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <%= prize.rank.ordinalize %> place: $<%= prize.amount %>
+                <% end %>
               </div>
               <%= link_to "", edit_hackimoto_category_prize_path({ hackimoto_id: @hackimoto.id, category_id: category.id, id: prize.id }), :class => 'icon-edit input-fix pull-left' %>
               <%= button_to "", hackimoto_category_prize_path({ hackimoto_id: @hackimoto.id, category_id: category.id, id: prize.id }), method: :delete, :class => 'icon-trash input-fix' %></li>

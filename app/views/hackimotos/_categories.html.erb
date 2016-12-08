@@ -28,7 +28,18 @@
             </p>
             <ul class="list-style-none margin-bottom-3">
             <% category.prizes.each do |prize| %>
-              <li class="small"><%= prize.rank.ordinalize %> place: $<%= prize.amount %></li>
+              <% if prize.winner %>
+                <li class="small">
+                  <%= prize.rank.ordinalize %> place: <%= prize.winner.hack.name %> ($<%= prize.amount %>)
+                  <div class="eq-image">
+                    <% prize.winner.hack.users.each do |user| %>
+                      <img src="<%= user.profile_pic %>" class="small-profile-pic">
+                    <% end %>
+                  </div>
+                </li>
+              <% else %>
+                <li class="small"><%= prize.rank.ordinalize %> place: $<%= prize.amount %></li>
+              <% end %>
             <% end %>
             </ul>
           </li>
