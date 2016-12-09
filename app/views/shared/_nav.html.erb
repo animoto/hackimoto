@@ -22,6 +22,7 @@ suppress_nav = yield(:suppress_nav).blank? ? false : yield(:suppress_nav)
                     <%= current_user.last_name.chars.first %>
                     <span class="caret"></span>
                   <ul class="gh-logged-in-menu list-style-none">
+                    <li class="gh-list-item"><a class="gh-link" href=<%= show_user_path(current_user.id) %>>Profile</a></li>
                     <li class="gh-list-item"><a class="gh-link" href=<%= signout_path %>>Log out</a></li>
                   </ul>
                 </li>

@@ -12,6 +12,8 @@ HackimotoApp::Application.routes.draw do
     end
   end
 
+  get '/user/:id', controller: :users, action: :show, as: :show_user
+
   post '/register_to_hackimoto', controller: :users, action: :register_to_hackimoto, as: :register_to_hackimoto
   get '/register_to_hack', controller: :users, action: :register_to_hack, as: :register_to_hack
 

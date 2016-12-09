@@ -1,0 +1,73 @@
+<div class="page-header-block no-margin">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8 inverted text-center">
+        <h1>Profile</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="features-callout">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-offset-4 col-md-4 text-center">
+        <div data-picture="data-picture" class="fc-image eq-image">
+          <img alt="null" src="<%= @user.profile_picture %>" class="margin-bottom-2">
+        </div>
+        <h3 class="label h5"><%= @user.first_name %> <%= @user.last_name %></h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% @hackimoto.each do |hackimoto, hacks| %>
+  <div class="features-callout module-divider">
+    <div class="container">
+      <div class="accent-line dark"></div>
+        <h2 class="fc-header">
+          <%= hackimoto.name %>
+        </h2>
+      <ul class="list-style-none row">
+        <% max_lines = hacks.length / 3 %>
+        <% last_line_num = hacks.length % 3 %>
+        <% hacks.each_with_index do |hack, i| %>
+          <% if (i + 1) % 3 == 1 %>
+            <div class="row">
+          <% end %>
+          <% if i / 3 == max_lines %>
+            <% if last_line_num == 1 %>
+              <% class_for_category = "col-sm-12 col-md-offset-4 col-md-4 margin-bottom-6" %>
+            <% else %>
+              <% if (i + 1) % 3 == 1 %>
+                <li class="col-sm-0 col-md-2 color-transparent">dummy content</li>
+              <% end %>
+              <% class_for_category = "col-sm-12 col-md-4 margin-bottom-6" %>
+            <% end %>
+          <% else %>
+            <% class_for_category = "col-sm-12 col-md-4 margin-bottom-6" %>
+          <% end %>
+          <li class="<%= class_for_category %> text-left">
+            <h3 class="label h5"><%= hack.name %></h3>
+            <div class="h4 small"><%= hack.description %></div>
+            <ul class="list-style-none margin-top-3 margin-bottom-3">
+            <% hack.users.each do |user| %>
+              <li class="text-left margin-top-2">
+                <div class="eq-image pull-left">
+                  <img src="<%= user.profile_pic %>" class="small-profile-pic">
+                </div>
+                <div class="label small profile-line"><%= user.first_name %><%= hack.proposed_user_id == user.id ? ' - proposer' : '' %></div>
+              </li>
+            <% end %>
+            </ul>
+            <% if current_user && hack.users.where(id: current_user.id).length == 0 %>
+              <a href="<%= register_to_hack_path({ hackimoto_id: @hackimoto.id, hack_id: hack.id }) %>" class="blue-link label">Join hack <span class="arrow">›</span></a>
+            <% end %>
+          </li>
+          <% if (i + 1) % 3 == 0 || hacks.length == (i + 1) %>
+            </div>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
